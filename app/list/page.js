@@ -1,4 +1,5 @@
 import {connectDB} from "@/util/database";
+import Link from "next/link";
 
 const List = async () => {
 
@@ -7,13 +8,13 @@ const List = async () => {
   return (
     <div className="list-bg">
       {
-        result.map((list) => {
+        result.map((list, i) => {
           return (
-            <div className="list-item">
-              <h4>{list.title}</h4>
+            <div key={i} className="list-item">
+              <Link href={`/detail/${list._id}`}><h4>{list.title}</h4></Link>
               <p>{list.content}</p>
             </div>
-          )
+          );
         })
       }
     </div>
